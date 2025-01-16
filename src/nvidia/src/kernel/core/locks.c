@@ -256,7 +256,7 @@ static inline NvU32 _gpuInstLoopPrev(NvU32 i, NvU32 max)
 {
     //
     // Note: given the ordering of the GPU alloc lock before the per-GPU locks,
-    // the "max" parameter of this function is not technically needed, however
+    // the "max" parameter of this function is not technically needed; however,
     // it is kept for consistency with _gpuInstLoopNext.
     //
 
@@ -270,9 +270,10 @@ static inline NvU32 _gpuInstLoopPrev(NvU32 i, NvU32 max)
     }
     else
     {
-        return i - 1;
+        return (i - 1) % max; // Ensure the value wraps correctly with the provided max.
     }
 }
+
 
 //
 // Determines whether a loop iterating over gpuInst values using
