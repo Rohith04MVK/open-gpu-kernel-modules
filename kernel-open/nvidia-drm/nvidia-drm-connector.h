@@ -96,9 +96,9 @@ struct drm_connector*
 nv_drm_get_connector(struct drm_device *dev,
                      NvU32 physicalIndex, NvKmsConnectorType type,
                      NvBool internal,
-                     char dpAddress[NVKMS_DP_ADDRESS_STRING_LENGTH]);
+                     const char dpAddress[NVKMS_DP_ADDRESS_STRING_LENGTH]);
 
-bool nv_drm_connector_revoke_permissions(struct drm_device *dev,
+bool nv_drm_connector_revoke_permissions(const struct drm_device *dev,
                                          struct nv_drm_connector *nv_connector);
 
 #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
